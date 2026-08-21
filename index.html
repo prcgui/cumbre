@@ -445,29 +445,36 @@
            MISSÃO / VISÃO
         ========================== */
 
-        .principles-grid {
-            margin-top: 70px;
+     .principle {
+    min-height: 360px;
 
-            display: grid;
+    background: var(--surface);
 
-            grid-template-columns: 1fr 1fr;
+    padding: 44px;
 
-            gap: 30px;
-        }
+    display: grid;
 
-        .principle {
-            min-height: 320px;
+    grid-template-rows: auto 1fr;
+}
 
-            background: var(--surface);
 
-            padding: 44px;
+.principle p {
+    align-self: center;
 
-            display: flex;
+    width: 100%;
 
-            flex-direction: column;
+    font-family: "Manrope", sans-serif;
 
-            justify-content: space-between;
-        }
+    font-size: 25px;
+
+    line-height: 1.4;
+
+    letter-spacing: -0.02em;
+
+    text-align: justify;
+
+    text-justify: inter-word;
+}
 
         .principle span {
             font-size: 12px;
