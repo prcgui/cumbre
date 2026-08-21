@@ -1,1 +1,968 @@
+<!DOCTYPE html>
 
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Projeto | Cumbre</title>
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link
+href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Manrope:wght@400;500;600&display=swap"
+rel="stylesheet">
+
+
+<style>
+
+:root {
+
+    --bg: #f4f3ef;
+    --white: #ffffff;
+
+    --dark: #151918;
+    --text: #343a38;
+    --muted: #737a77;
+
+    --accent: #8d9b90;
+
+    --line: #d9ddd9;
+
+    --max-width: 1240px;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    font-family: "DM Sans", sans-serif;
+
+    background: var(--bg);
+
+    color: var(--dark);
+
+    line-height: 1.6;
+}
+
+
+a {
+
+    color: inherit;
+
+    text-decoration: none;
+}
+
+
+img {
+
+    display: block;
+
+    max-width: 100%;
+}
+
+
+.container {
+
+    width: min(90%, var(--max-width));
+
+    margin: auto;
+}
+
+
+/* =========================
+   HEADER
+========================== */
+
+header {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    z-index: 1000;
+
+    background: #ffffff;
+
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+
+nav {
+
+    min-height: 86px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+
+.logo img {
+
+    width: 190px;
+
+    height: auto;
+}
+
+
+.nav-links {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 32px;
+
+    font-size: 14px;
+
+    font-weight: 500;
+}
+
+
+.nav-links > a,
+.nav-project {
+
+    position: relative;
+}
+
+
+.nav-links > a::after,
+.nav-project::after {
+
+    content: "";
+
+    position: absolute;
+
+    bottom: -7px;
+    left: 0;
+
+    width: 0;
+
+    height: 1px;
+
+    background: var(--dark);
+
+    transition: width .25s ease;
+}
+
+
+.nav-links > a:hover::after,
+.nav-project:hover::after {
+
+    width: 100%;
+}
+
+
+/* DROPDOWN */
+
+.nav-dropdown {
+
+    position: relative;
+}
+
+
+.dropdown-menu {
+
+    position: absolute;
+
+    top: calc(100% + 7px);
+    left: 50%;
+
+    transform: translate(-50%, 8px);
+
+    min-width: 190px;
+
+    padding: 10px 0;
+
+    background: #ffffff;
+
+    border: 1px solid rgba(0,0,0,.08);
+
+    box-shadow: 0 12px 35px rgba(0,0,0,.08);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition: .2s ease;
+
+    z-index: 2000;
+}
+
+
+.dropdown-menu a {
+
+    display: block;
+
+    padding: 11px 20px;
+
+    font-size: 13px;
+
+    white-space: nowrap;
+}
+
+
+.dropdown-menu a:hover {
+
+    background: var(--bg);
+}
+
+
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown:focus-within .dropdown-menu {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transform: translate(-50%, 0);
+}
+
+
+/* =========================
+   HERO DO PROJETO
+========================== */
+
+.project-hero {
+
+    min-height: 78vh;
+
+    padding-top: 165px;
+
+    display: flex;
+
+    align-items: center;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+.project-hero::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 650px;
+    height: 650px;
+
+    right: -250px;
+    top: 20px;
+
+    border: 1px solid rgba(0,0,0,.08);
+
+    transform: rotate(45deg);
+}
+
+
+.eyebrow {
+
+    margin-bottom: 30px;
+
+    font-size: 12px;
+
+    color: var(--muted);
+
+    letter-spacing: .18em;
+
+    text-transform: uppercase;
+}
+
+
+.project-hero h1 {
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: clamp(60px, 8vw, 112px);
+
+    line-height: .96;
+
+    letter-spacing: -.06em;
+
+    font-weight: 500;
+}
+
+
+.project-hero h1 span {
+
+    color: var(--accent);
+}
+
+
+.project-description {
+
+    max-width: 650px;
+
+    margin-top: 42px;
+
+    color: var(--text);
+
+    font-size: 19px;
+
+    line-height: 1.7;
+}
+
+
+.project-meta {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 35px;
+
+    margin-top: 40px;
+}
+
+
+.project-meta div {
+
+    padding-right: 35px;
+
+    border-right: 1px solid var(--line);
+}
+
+
+.project-meta span {
+
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    letter-spacing: .12em;
+
+    text-transform: uppercase;
+}
+
+
+.project-meta strong {
+
+    font-size: 15px;
+
+    font-weight: 500;
+}
+
+
+/* =========================
+   ETAPAS
+========================== */
+
+.stages {
+
+    padding: 130px 0;
+
+    background: #ffffff;
+}
+
+
+.section-label {
+
+    margin-bottom: 35px;
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    letter-spacing: .18em;
+
+    text-transform: uppercase;
+}
+
+
+.section-title {
+
+    max-width: 700px;
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: clamp(42px,5vw,68px);
+
+    font-weight: 500;
+
+    letter-spacing: -.045em;
+
+    line-height: 1.05;
+}
+
+
+.stage-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(2,1fr);
+
+    gap: 1px;
+
+    margin-top: 75px;
+
+    background: var(--line);
+
+    border: 1px solid var(--line);
+}
+
+
+.stage-card {
+
+    min-height: 320px;
+
+    padding: 42px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    background: #ffffff;
+
+    transition:
+        background .25s ease,
+        color .25s ease;
+}
+
+
+.stage-card:hover {
+
+    background: var(--dark);
+
+    color: #ffffff;
+}
+
+
+.stage-number {
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    letter-spacing: .15em;
+}
+
+
+.stage-card:hover .stage-number,
+.stage-card:hover p {
+
+    color: #afb5b1;
+}
+
+
+.stage-card h2 {
+
+    margin-top: auto;
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: 34px;
+
+    font-weight: 500;
+
+    letter-spacing: -.035em;
+}
+
+
+.stage-card p {
+
+    margin-top: 15px;
+
+    max-width: 480px;
+
+    color: var(--muted);
+
+    transition: color .25s ease;
+}
+
+
+.stage-arrow {
+
+    margin-top: 30px;
+
+    font-size: 26px;
+}
+
+
+/* EM BREVE */
+
+.stage-card.disabled {
+
+    cursor: default;
+
+    opacity: .52;
+}
+
+
+.stage-card.disabled:hover {
+
+    background: #ffffff;
+
+    color: var(--dark);
+}
+
+
+/* =========================
+   FOOTER
+========================== */
+
+footer {
+
+    background: #ffffff;
+
+    padding: 60px 0 30px;
+
+    border-top: 1px solid var(--line);
+}
+
+
+.footer-bottom {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    color: var(--muted);
+
+    font-size: 12px;
+}
+
+
+/* =========================
+   RESPONSIVO
+========================== */
+
+@media(max-width:800px) {
+
+    .nav-links {
+
+        display: none;
+    }
+
+
+    .stage-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .project-meta {
+
+        flex-direction: column;
+
+        gap: 15px;
+    }
+
+
+    .project-meta div {
+
+        border-right: none;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+
+<body>
+
+
+<header>
+
+<div class="container">
+
+<nav>
+
+
+<a
+href="./index.html"
+class="logo">
+
+<img
+src="./assets/images/logo-cumbre.png"
+alt="Cumbre">
+
+</a>
+
+
+
+<div class="nav-links">
+
+
+<a href="./index.html#sobre">
+Sobre
+</a>
+
+
+<a href="./index.html#expertise">
+Expertise
+</a>
+
+
+<a href="./index.html#metodo">
+Método
+</a>
+
+
+
+<div class="nav-dropdown">
+
+
+<a
+href="./projeto.html"
+class="nav-project">
+
+Projeto
+
+</a>
+
+
+<div class="dropdown-menu">
+
+<a href="./implantacao.html">
+Implantação
+</a>
+
+<a href="./referencias.html">
+Referências
+</a>
+
+</div>
+
+
+</div>
+
+
+<a href="./index.html#equipe">
+Equipe
+</a>
+
+
+</div>
+
+
+</nav>
+
+</div>
+
+</header>
+
+
+
+<main>
+
+
+<section class="project-hero">
+
+<div class="container">
+
+
+<p class="eyebrow">
+
+Projeto 01 · Residencial
+
+</p>
+
+
+<h1>
+
+Residência<br>
+
+<span>
+Cumbre 01.
+</span>
+
+</h1>
+
+
+<p class="project-description">
+
+Desenvolvimento integrado de uma residência
+contemporânea de alto padrão na região serrana
+do Rio de Janeiro, concebida por meio da
+colaboração entre arquitetura, engenharia e BIM.
+
+</p>
+
+
+
+<div class="project-meta">
+
+
+<div>
+
+<span>
+Área prevista
+</span>
+
+<strong>
+≈ 600 m²
+</strong>
+
+</div>
+
+
+<div>
+
+<span>
+Localização
+</span>
+
+<strong>
+Serra do Rio de Janeiro
+</strong>
+
+</div>
+
+
+<div>
+
+<span>
+Metodologia
+</span>
+
+<strong>
+BIM
+</strong>
+
+</div>
+
+
+<div>
+
+<span>
+Ano
+</span>
+
+<strong>
+2026
+</strong>
+
+</div>
+
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<section class="stages">
+
+<div class="container">
+
+
+<p class="section-label">
+
+Desenvolvimento
+
+</p>
+
+
+<h2 class="section-title">
+
+Etapas do projeto.
+
+</h2>
+
+
+
+<div class="stage-grid">
+
+
+<a
+href="./implantacao.html"
+class="stage-card">
+
+<span class="stage-number">
+
+01 — Estudo preliminar
+
+</span>
+
+
+<div>
+
+<h2>
+Implantação
+</h2>
+
+<p>
+
+Prospecção e análise preliminar das
+alternativas para implantação do
+empreendimento.
+
+</p>
+
+
+<div class="stage-arrow">
+→
+</div>
+
+</div>
+
+</a>
+
+
+
+<a
+href="./referencias.html"
+class="stage-card">
+
+<span class="stage-number">
+
+02 — Pesquisa
+
+</span>
+
+
+<div>
+
+<h2>
+Referências
+</h2>
+
+<p>
+
+Referências arquitetônicas, espaciais e
+conceituais utilizadas no desenvolvimento
+do empreendimento.
+
+</p>
+
+
+<div class="stage-arrow">
+→
+</div>
+
+</div>
+
+</a>
+
+
+
+<div class="stage-card disabled">
+
+<span class="stage-number">
+
+03 — Em desenvolvimento
+
+</span>
+
+
+<div>
+
+<h2>
+Conceito
+</h2>
+
+<p>
+
+Definição do partido e das principais
+diretrizes arquitetônicas.
+
+</p>
+
+</div>
+
+</div>
+
+
+
+<div class="stage-card disabled">
+
+<span class="stage-number">
+
+04 — Em desenvolvimento
+
+</span>
+
+
+<div>
+
+<h2>
+Projeto integrado
+</h2>
+
+<p>
+
+Desenvolvimento e coordenação das
+diferentes disciplinas em ambiente BIM.
+
+</p>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+</div>
+
+</section>
+
+
+</main>
+
+
+
+<footer>
+
+<div class="container">
+
+<div class="footer-bottom">
+
+<span>
+© 2026 Cumbre
+</span>
+
+<span>
+O ponto mais alto da sua ideia.
+</span>
+
+</div>
+
+</div>
+
+</footer>
+
+
+</body>
+
+</html>
