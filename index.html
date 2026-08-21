@@ -1,30 +1,1316 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Cumbre | Projetos Integrados BIM</title>
+
+    <meta
+        name="description"
+        content="Cumbre — Consórcio multidisciplinar de arquitetura, engenharia e coordenação BIM."
+    >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        /* =========================
+           CONFIGURAÇÕES GERAIS
+        ========================== */
+
+        :root {
+            --bg: #f4f3ef;
+            --surface: #ffffff;
+            --dark: #151918;
+            --text: #343a38;
+            --muted: #737a77;
+            --line: #d9ddd9;
+
+            /* Trocaremos esta cor depois pela cor oficial da logo */
+            --accent: #788f7d;
+
+            --max-width: 1240px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--dark);
+            font-family: "DM Sans", sans-serif;
+            line-height: 1.6;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: min(90%, var(--max-width));
+            margin: auto;
+        }
+
+
+        /* =========================
+           MENU
+        ========================== */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+
+            background: rgba(244, 243, 239, 0.88);
+            backdrop-filter: blur(16px);
+
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+
+        nav {
+            min-height: 86px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo img {
+            width: 150px;
+            max-height: 54px;
+            object-fit: contain;
+            object-position: left center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .nav-links a {
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: "";
+
+            position: absolute;
+            bottom: -7px;
+            left: 0;
+
+            width: 0;
+            height: 1px;
+
+            background: var(--dark);
+
+            transition: width 0.25s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+
+        /* =========================
+           HERO
+        ========================== */
+
+        .hero {
+            min-height: 100vh;
+
+            padding-top: 130px;
+
+            display: flex;
+            align-items: center;
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 700px;
+            height: 700px;
+
+            right: -260px;
+            top: -120px;
+
+            border: 1px solid rgba(0,0,0,0.10);
+
+            transform: rotate(45deg);
+        }
+
+        .hero::after {
+            content: "";
+
+            position: absolute;
+
+            width: 500px;
+            height: 500px;
+
+            right: -170px;
+            top: 40px;
+
+            border: 1px solid rgba(0,0,0,0.08);
+
+            transform: rotate(45deg);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+
+            max-width: 980px;
+        }
+
+        .eyebrow {
+            font-size: 13px;
+            text-transform: uppercase;
+
+            letter-spacing: 0.18em;
+
+            color: var(--muted);
+
+            margin-bottom: 28px;
+        }
+
+        .hero h1 {
+            font-family: "Manrope", sans-serif;
+
+            font-size: clamp(54px, 8vw, 110px);
+
+            line-height: 0.98;
+
+            letter-spacing: -0.055em;
+
+            font-weight: 500;
+
+            max-width: 1000px;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero-description {
+            max-width: 610px;
+
+            margin-top: 40px;
+
+            font-size: 19px;
+
+            color: var(--text);
+        }
+
+        .hero-actions {
+            margin-top: 42px;
+
+            display: flex;
+            align-items: center;
+
+            gap: 28px;
+        }
+
+        .button {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 15px 25px;
+
+            background: var(--dark);
+            color: #ffffff;
+
+            font-size: 14px;
+
+            transition: transform 0.2s ease,
+                        background 0.2s ease;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            background: var(--accent);
+        }
+
+        .text-link {
+            font-size: 14px;
+
+            border-bottom: 1px solid var(--dark);
+
+            padding-bottom: 3px;
+        }
+
+
+        /* =========================
+           SEÇÕES
+        ========================== */
+
+        section {
+            padding: 130px 0;
+        }
+
+        .section-label {
+            font-size: 12px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.18em;
+
+            color: var(--muted);
+
+            margin-bottom: 45px;
+        }
+
+        .section-title {
+            font-family: "Manrope", sans-serif;
+
+            font-size: clamp(38px, 5vw, 66px);
+
+            font-weight: 500;
+
+            letter-spacing: -0.045em;
+
+            line-height: 1.08;
+        }
+
+
+        /* =========================
+           SOBRE
+        ========================== */
+
+        .about {
+            background: var(--dark);
+            color: #ffffff;
+        }
+
+        .about .section-label {
+            color: #aab1ae;
+        }
+
+        .about-grid {
+            display: grid;
+
+            grid-template-columns: 1.1fr 1fr;
+
+            gap: 100px;
+
+            align-items: start;
+        }
+
+        .about-text {
+            font-size: 19px;
+
+            color: #c9cecc;
+
+            max-width: 600px;
+        }
+
+        .about-text p + p {
+            margin-top: 22px;
+        }
+
+
+        /* =========================
+           SERVIÇOS
+        ========================== */
+
+        .services-grid {
+            margin-top: 75px;
+
+            border-top: 1px solid var(--line);
+        }
+
+        .service {
+            display: grid;
+
+            grid-template-columns: 70px 1fr 1fr;
+
+            gap: 30px;
+
+            padding: 32px 0;
+
+            border-bottom: 1px solid var(--line);
+        }
+
+        .service-number {
+            color: var(--muted);
+
+            font-size: 13px;
+        }
+
+        .service h3 {
+            font-family: "Manrope", sans-serif;
+
+            font-size: 25px;
+
+            font-weight: 500;
+        }
+
+        .service p {
+            color: var(--muted);
+
+            max-width: 460px;
+        }
+
+
+        /* =========================
+           MÉTODO
+        ========================== */
+
+        .method {
+            background: #e7e9e4;
+        }
+
+        .method-line {
+            margin-top: 80px;
+
+            display: grid;
+
+            grid-template-columns: repeat(5, 1fr);
+
+            border-top: 1px solid #aeb5af;
+        }
+
+        .method-step {
+            padding: 27px 20px 0 0;
+
+            position: relative;
+        }
+
+        .method-step::before {
+            content: "";
+
+            width: 9px;
+            height: 9px;
+
+            background: var(--dark);
+
+            border-radius: 50%;
+
+            position: absolute;
+
+            top: -5px;
+            left: 0;
+        }
+
+        .method-step span {
+            font-size: 12px;
+
+            color: var(--muted);
+        }
+
+        .method-step h3 {
+            margin-top: 12px;
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: 21px;
+
+            font-weight: 500;
+        }
+
+
+        /* =========================
+           MISSÃO / VISÃO
+        ========================== */
+
+        .principles-grid {
+            margin-top: 70px;
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 30px;
+        }
+
+        .principle {
+            min-height: 320px;
+
+            background: var(--surface);
+
+            padding: 44px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: space-between;
+        }
+
+        .principle span {
+            font-size: 12px;
+
+            letter-spacing: 0.15em;
+
+            text-transform: uppercase;
+
+            color: var(--muted);
+        }
+
+        .principle p {
+            font-family: "Manrope", sans-serif;
+
+            font-size: 25px;
+
+            line-height: 1.4;
+
+            letter-spacing: -0.02em;
+        }
+
+
+        /* =========================
+           VALORES
+        ========================== */
+
+        .values {
+            padding-top: 10px;
+        }
+
+        .values-grid {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 1px;
+
+            background: var(--line);
+
+            border: 1px solid var(--line);
+        }
+
+        .value {
+            background: var(--bg);
+
+            padding: 38px;
+
+            min-height: 210px;
+        }
+
+        .value h3 {
+            font-family: "Manrope", sans-serif;
+
+            font-size: 21px;
+
+            font-weight: 500;
+
+            margin-bottom: 18px;
+        }
+
+        .value p {
+            color: var(--muted);
+
+            font-size: 15px;
+        }
+
+
+        /* =========================
+           PROJETO
+        ========================== */
+
+        .project {
+            background: var(--dark);
+            color: white;
+        }
+
+        .project-layout {
+            display: grid;
+
+            grid-template-columns: 1fr 1.3fr;
+
+            gap: 80px;
+
+            align-items: end;
+        }
+
+        .project .section-label {
+            color: #aeb6b2;
+        }
+
+        .project-details {
+            margin-top: 40px;
+
+            color: #bfc6c3;
+        }
+
+        .project-info {
+            border-top: 1px solid #414644;
+
+            margin-top: 50px;
+        }
+
+        .project-info div {
+            display: flex;
+
+            justify-content: space-between;
+
+            padding: 15px 0;
+
+            border-bottom: 1px solid #414644;
+
+            font-size: 14px;
+        }
+
+        .project-image {
+            min-height: 570px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #3c4440,
+                    #1b1f1d
+                );
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 50px;
+
+            color: #8b9390;
+
+            text-align: center;
+        }
+
+
+        /* =========================
+           EQUIPE
+        ========================== */
+
+        .team-grid {
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 25px;
+
+            margin-top: 70px;
+        }
+
+        .team-member {
+            border-top: 1px solid var(--dark);
+
+            padding-top: 20px;
+        }
+
+        .team-member h3 {
+            font-family: "Manrope", sans-serif;
+
+            font-size: 19px;
+
+            font-weight: 500;
+
+            margin-bottom: 8px;
+        }
+
+        .team-member p {
+            color: var(--muted);
+
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            background: #101312;
+
+            color: #ffffff;
+
+            padding: 80px 0 35px;
+        }
+
+        .footer-top {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: flex-end;
+
+            margin-bottom: 90px;
+        }
+
+        .footer-name {
+            font-family: "Manrope", sans-serif;
+
+            font-size: clamp(50px, 8vw, 100px);
+
+            letter-spacing: -0.06em;
+
+            font-weight: 500;
+        }
+
+        .footer-tagline {
+            color: #aeb5b2;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333836;
+
+            padding-top: 20px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            color: #858c89;
+
+            font-size: 12px;
+        }
+
+
+        /* =========================
+           RESPONSIVO
+        ========================== */
+
+        @media (max-width: 900px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .about-grid,
+            .project-layout,
+            .principles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service {
+                grid-template-columns: 45px 1fr;
+            }
+
+            .service p {
+                grid-column: 2;
+            }
+
+            .method-line {
+                grid-template-columns: 1fr;
+                border-top: none;
+            }
+
+            .method-step {
+                border-top: 1px solid #aeb5af;
+
+                padding: 25px 0;
+            }
+
+            .method-step::before {
+                display: none;
+            }
+
+            .values-grid,
+            .team-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            section {
+                padding: 90px 0;
+            }
+
+            .hero h1 {
+                font-size: 53px;
+            }
+
+            .hero-description {
+                font-size: 17px;
+            }
+
+            .values-grid,
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-top,
+            .footer-bottom {
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 20px;
+            }
+
+        }
+
+    </style>
 </head>
+
 
 <body>
 
-    <h1>CUMBRE</h1>
-    <h2>O ponto mais alto da sua ideia.</h2>
 
-    <p>
-        A Cumbre é um consórcio multidisciplinar de arquitetura e engenharia
-        voltado ao desenvolvimento integrado de projetos através da metodologia BIM.
-    </p>
+<header>
 
-    <h2>Áreas de atuação</h2>
+    <div class="container">
 
-    <p>Arquitetura e Urbanismo</p>
-    <p>Estruturas e Construção</p>
-    <p>Instalações Hidrossanitárias</p>
-    <p>Instalações Elétricas e AVAC</p>
-    <p>Coordenação BIM</p>
+        <nav>
+
+            <a href="#inicio" class="logo">
+                <img src="logo-cumbre.png" alt="Cumbre">
+            </a>
+
+            <div class="nav-links">
+                <a href="#sobre">Sobre</a>
+                <a href="#expertise">Expertise</a>
+                <a href="#metodo">Método</a>
+                <a href="#projeto">Projeto</a>
+                <a href="#equipe">Equipe</a>
+            </div>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main>
+
+
+<!-- HERO -->
+
+<section class="hero" id="inicio">
+
+    <div class="container">
+
+        <div class="hero-content">
+
+            <p class="eyebrow">
+                Arquitetura · Engenharia · BIM
+            </p>
+
+            <h1>
+                Elevamos ideias através da
+                <span>integração.</span>
+            </h1>
+
+            <p class="hero-description">
+                Projetos multidisciplinares desenvolvidos através da
+                colaboração entre arquitetura, engenharia, tecnologia
+                e gestão da informação.
+            </p>
+
+            <div class="hero-actions">
+
+                <a href="#sobre" class="button">
+                    Conheça a Cumbre
+                </a>
+
+                <a href="#projeto" class="text-link">
+                    Nosso projeto
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- SOBRE -->
+
+<section class="about" id="sobre">
+
+    <div class="container">
+
+        <p class="section-label">
+            01 — Sobre a Cumbre
+        </p>
+
+        <div class="about-grid">
+
+            <h2 class="section-title">
+                Diferentes disciplinas.<br>
+                Um único projeto.
+            </h2>
+
+            <div class="about-text">
+
+                <p>
+                    A Cumbre é um consórcio multidisciplinar de
+                    arquitetura e engenharia criado para desenvolver
+                    empreendimentos de forma integrada, colaborativa
+                    e orientada por dados.
+                </p>
+
+                <p>
+                    Conectamos pessoas, processos e tecnologia para
+                    transformar as necessidades de cada cliente em
+                    soluções tecnicamente consistentes, economicamente
+                    viáveis, sustentáveis e construíveis.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- EXPERTISE -->
+
+<section id="expertise">
+
+    <div class="container">
+
+        <p class="section-label">
+            02 — Expertise
+        </p>
+
+        <h2 class="section-title">
+            Projetamos como<br>
+            um único sistema.
+        </h2>
+
+
+        <div class="services-grid">
+
+
+            <div class="service">
+
+                <span class="service-number">01</span>
+
+                <h3>Arquitetura & Urbanismo</h3>
+
+                <p>
+                    Concepção arquitetônica, interiores,
+                    desenvolvimento e integração espacial.
+                </p>
+
+            </div>
+
+
+            <div class="service">
+
+                <span class="service-number">02</span>
+
+                <h3>Estruturas & Construção</h3>
+
+                <p>
+                    Projeto estrutural, planejamento,
+                    orçamento e análise de construtibilidade.
+                </p>
+
+            </div>
+
+
+            <div class="service">
+
+                <span class="service-number">03</span>
+
+                <h3>Sistemas Hidrossanitários</h3>
+
+                <p>
+                    Dimensionamento e integração dos
+                    sistemas hidráulicos e sanitários.
+                </p>
+
+            </div>
+
+
+            <div class="service">
+
+                <span class="service-number">04</span>
+
+                <h3>Instalações Elétricas & AVAC</h3>
+
+                <p>
+                    Sistemas elétricos, climatização
+                    e integração com as demais disciplinas.
+                </p>
+
+            </div>
+
+
+            <div class="service">
+
+                <span class="service-number">05</span>
+
+                <h3>Coordenação BIM</h3>
+
+                <p>
+                    Gestão da informação, processos,
+                    interoperabilidade e coordenação
+                    multidisciplinar.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- MÉTODO -->
+
+<section class="method" id="metodo">
+
+    <div class="container">
+
+        <p class="section-label">
+            03 — Método
+        </p>
+
+        <h2 class="section-title">
+            Da ideia à construção.
+        </h2>
+
+
+        <div class="method-line">
+
+            <div class="method-step">
+                <span>01</span>
+                <h3>Conceber</h3>
+            </div>
+
+            <div class="method-step">
+                <span>02</span>
+                <h3>Integrar</h3>
+            </div>
+
+            <div class="method-step">
+                <span>03</span>
+                <h3>Coordenar</h3>
+            </div>
+
+            <div class="method-step">
+                <span>04</span>
+                <h3>Analisar</h3>
+            </div>
+
+            <div class="method-step">
+                <span>05</span>
+                <h3>Construir</h3>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- MISSÃO / VISÃO -->
+
+<section>
+
+    <div class="container">
+
+        <p class="section-label">
+            04 — Direcionamento
+        </p>
+
+        <h2 class="section-title">
+            O que nos move.
+        </h2>
+
+
+        <div class="principles-grid">
+
+            <article class="principle">
+
+                <span>Missão</span>
+
+                <p>
+                    Desenvolver projetos integrados de arquitetura
+                    e engenharia por meio da metodologia BIM,
+                    conectando pessoas, processos e tecnologia.
+                </p>
+
+            </article>
+
+
+            <article class="principle">
+
+                <span>Visão</span>
+
+                <p>
+                    Ser reconhecida como referência em projetos
+                    multidisciplinares integrados, destacando-se
+                    pela qualidade, colaboração e gestão da informação.
+                </p>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- VALORES -->
+
+<section class="values">
+
+    <div class="container">
+
+        <div class="values-grid">
+
+            <div class="value">
+                <h3>Integração</h3>
+                <p>
+                    Arquitetura, engenharia e construção
+                    como partes de um único sistema.
+                </p>
+            </div>
+
+            <div class="value">
+                <h3>Excelência</h3>
+                <p>
+                    Rigor técnico e qualidade em
+                    todas as decisões de projeto.
+                </p>
+            </div>
+
+            <div class="value">
+                <h3>Colaboração</h3>
+                <p>
+                    Informação compartilhada e decisões
+                    desenvolvidas coletivamente.
+                </p>
+            </div>
+
+            <div class="value">
+                <h3>Inovação</h3>
+                <p>
+                    Tecnologia aplicada para melhorar
+                    processos e resultados.
+                </p>
+            </div>
+
+            <div class="value">
+                <h3>Sustentabilidade</h3>
+                <p>
+                    Soluções eficientes sob os aspectos
+                    ambiental, econômico e técnico.
+                </p>
+            </div>
+
+            <div class="value">
+                <h3>Transparência</h3>
+                <p>
+                    Responsabilidades, informações e
+                    decisões claramente comunicadas.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- PROJETO -->
+
+<section class="project" id="projeto">
+
+    <div class="container">
+
+        <div class="project-layout">
+
+            <div>
+
+                <p class="section-label">
+                    05 — Projeto
+                </p>
+
+                <h2 class="section-title">
+                    Residência<br>
+                    Cumbre 01.
+                </h2>
+
+                <p class="project-details">
+                    Desenvolvimento integrado de uma residência
+                    contemporânea de alto padrão na Serra do
+                    Rio de Janeiro.
+                </p>
+
+
+                <div class="project-info">
+
+                    <div>
+                        <span>Localização</span>
+                        <span>Serra · RJ</span>
+                    </div>
+
+                    <div>
+                        <span>Área</span>
+                        <span>≈ 600 m²</span>
+                    </div>
+
+                    <div>
+                        <span>Tipologia</span>
+                        <span>Residencial</span>
+                    </div>
+
+                    <div>
+                        <span>Metodologia</span>
+                        <span>BIM</span>
+                    </div>
+
+                    <div>
+                        <span>Ano</span>
+                        <span>2026</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="project-image">
+
+                Futuro render do projeto Cumbre 01
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- EQUIPE -->
+
+<section id="equipe">
+
+    <div class="container">
+
+        <p class="section-label">
+            06 — Equipe
+        </p>
+
+        <h2 class="section-title">
+            Integração começa<br>
+            pelas pessoas.
+        </h2>
+
+
+        <div class="team-grid">
+
+            <div class="team-member">
+                <h3>Joaquín Rodrigo Agreda</h3>
+                <p>Arquitetura & Urbanismo</p>
+            </div>
+
+            <div class="team-member">
+                <h3>João Arthur Ferreira</h3>
+                <p>Estruturas & Construção</p>
+            </div>
+
+            <div class="team-member">
+                <h3>Bruna de Carvalho Sebastião</h3>
+                <p>Instalações Hidrossanitárias</p>
+            </div>
+
+            <div class="team-member">
+                <h3>Guilherme Pereira da Costa</h3>
+                <p>Instalações Elétricas & Coordenação BIM</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+
+<footer>
+
+    <div class="container">
+
+        <div class="footer-top">
+
+            <div>
+                <div class="footer-name">
+                    Cumbre.
+                </div>
+
+                <p class="footer-tagline">
+                    O ponto mais alto da sua ideia.
+                </p>
+            </div>
+
+            <p>
+                Rio de Janeiro · Brasil
+            </p>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 Cumbre
+            </span>
+
+            <span>
+                Arquitetura · Engenharia · BIM
+            </span>
+
+        </div>
+
+    </div>
+
+</footer>
+
 
 </body>
-
 </html>
