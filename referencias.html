@@ -1,129 +1,1075 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Referências | Cumbre</title>
+    <title>Referências | Cumbre</title>
 
-<link rel="preconnect"
-href="https://fonts.googleapis.com">
+    <meta
+        name="description"
+        content="Referências arquitetônicas e conceituais do projeto Cumbre."
+    >
 
-<link rel="preconnect"
-href="https://fonts.gstatic.com"
-crossorigin>
+    <!-- FONTES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 
-<link
-href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Manrope:wght@400;500&display=swap"
-rel="stylesheet">
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
 
-<style>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Manrope:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
 
-* {
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
 
-body {
+    <style>
 
-    min-height:100vh;
+        /* =========================
+           CONFIGURAÇÕES GERAIS
+        ========================== */
 
-    display:flex;
+        :root {
 
-    align-items:center;
+            --bg: #f4f3ef;
+            --white: #ffffff;
 
-    justify-content:center;
+            --dark: #151918;
+            --text: #343a38;
+            --muted: #737a77;
 
-    background:#f4f3ef;
+            --accent: #8d9b90;
 
-    color:#151918;
+            --line: #d9ddd9;
 
-    font-family:"DM Sans",sans-serif;
-}
+            --max-width: 1240px;
+        }
 
-main {
 
-    width:min(90%,1100px);
-}
+        * {
+            margin: 0;
+            padding: 0;
 
-a {
+            box-sizing: border-box;
+        }
 
-    color:#737a77;
 
-    text-decoration:none;
+        html {
+            scroll-behavior: smooth;
+        }
 
-    font-size:13px;
-}
 
-h1 {
+        body {
 
-    margin-top:35px;
+            min-height: 100vh;
 
-    font-family:"Manrope",sans-serif;
+            background: var(--bg);
 
-    font-size:clamp(65px,10vw,130px);
+            color: var(--dark);
 
-    font-weight:500;
+            font-family: "DM Sans", sans-serif;
 
-    letter-spacing:-.065em;
+            line-height: 1.6;
+        }
 
-    line-height:.95;
-}
 
-p {
+        a {
+            color: inherit;
 
-    max-width:600px;
+            text-decoration: none;
+        }
 
-    margin-top:35px;
 
-    color:#737a77;
+        img {
+            display: block;
 
-    font-size:18px;
+            max-width: 100%;
+        }
 
-    line-height:1.7;
-}
 
-</style>
+        .container {
+
+            width: min(90%, var(--max-width));
+
+            margin: 0 auto;
+        }
+
+
+
+        /* =========================
+           HEADER PADRÃO CUMBRE
+        ========================== */
+
+        header {
+
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+
+            z-index: 1000;
+
+            background: #ffffff;
+
+            border-bottom: 1px solid rgba(0,0,0,.06);
+        }
+
+
+        nav {
+
+            min-height: 118px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 40px;
+        }
+
+
+        .logo {
+
+            display: flex;
+
+            align-items: center;
+
+            flex-shrink: 0;
+        }
+
+
+        .logo img {
+
+            width: 190px;
+
+            height: auto;
+
+            display: block;
+        }
+
+
+        .nav-links {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 32px;
+
+            font-size: 14px;
+
+            font-weight: 500;
+        }
+
+
+        .nav-links > a,
+        .nav-project {
+
+            position: relative;
+
+            padding: 8px 0;
+        }
+
+
+        .nav-links > a::after,
+        .nav-project::after {
+
+            content: "";
+
+            position: absolute;
+
+            bottom: 0;
+            left: 0;
+
+            width: 0;
+
+            height: 1px;
+
+            background: var(--dark);
+
+            transition: width .25s ease;
+        }
+
+
+        .nav-links > a:hover::after,
+        .nav-project:hover::after {
+
+            width: 100%;
+        }
+
+
+
+        /* =========================
+           DROPDOWN PROJETO
+        ========================== */
+
+        .nav-dropdown {
+
+            position: relative;
+        }
+
+
+        .dropdown-menu {
+
+            position: absolute;
+
+            top: calc(100% + 7px);
+            left: 50%;
+
+            transform: translate(-50%, 8px);
+
+            min-width: 190px;
+
+            padding: 10px 0;
+
+            background: #ffffff;
+
+            border: 1px solid rgba(0,0,0,.08);
+
+            box-shadow: 0 12px 35px rgba(0,0,0,.08);
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            transition:
+                opacity .2s ease,
+                transform .2s ease,
+                visibility .2s ease;
+
+            z-index: 2000;
+        }
+
+
+        .dropdown-menu a {
+
+            display: block;
+
+            padding: 11px 20px;
+
+            color: var(--dark);
+
+            font-size: 13px;
+
+            white-space: nowrap;
+
+            transition:
+                background .2s ease,
+                padding-left .2s ease;
+        }
+
+
+        .dropdown-menu a::after {
+
+            display: none;
+        }
+
+
+        .dropdown-menu a:hover {
+
+            background: var(--bg);
+
+            padding-left: 24px;
+        }
+
+
+        .nav-dropdown:hover .dropdown-menu,
+        .nav-dropdown:focus-within .dropdown-menu {
+
+            opacity: 1;
+
+            visibility: visible;
+
+            transform: translate(-50%, 0);
+        }
+
+
+
+        /* =========================
+           CABEÇALHO DA PÁGINA
+        ========================== */
+
+        .references-hero {
+
+            padding: 205px 0 100px;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+
+        .references-hero::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 600px;
+            height: 600px;
+
+            right: -250px;
+            top: -40px;
+
+            border: 1px solid rgba(0,0,0,.07);
+
+            transform: rotate(45deg);
+        }
+
+
+        .breadcrumb {
+
+            position: relative;
+
+            z-index: 2;
+
+            margin-bottom: 30px;
+
+            color: var(--muted);
+
+            font-size: 11px;
+
+            letter-spacing: .16em;
+
+            text-transform: uppercase;
+        }
+
+
+        .breadcrumb a {
+
+            transition: color .2s ease;
+        }
+
+
+        .breadcrumb a:hover {
+
+            color: var(--dark);
+        }
+
+
+        .references-hero h1 {
+
+            position: relative;
+
+            z-index: 2;
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: clamp(62px, 8vw, 108px);
+
+            font-weight: 500;
+
+            line-height: .98;
+
+            letter-spacing: -.06em;
+        }
+
+
+        .references-hero h1 span {
+
+            color: var(--accent);
+        }
+
+
+        .references-intro {
+
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 700px;
+
+            margin-top: 35px;
+
+            color: var(--text);
+
+            font-size: 18px;
+
+            line-height: 1.75;
+        }
+
+
+
+        /* =========================
+           CONTEÚDO DAS REFERÊNCIAS
+        ========================== */
+
+        .references-content {
+
+            padding: 110px 0 130px;
+
+            background: #ffffff;
+        }
+
+
+        .section-label {
+
+            margin-bottom: 35px;
+
+            color: var(--muted);
+
+            font-size: 11px;
+
+            font-weight: 500;
+
+            letter-spacing: .18em;
+
+            text-transform: uppercase;
+        }
+
+
+        .section-title {
+
+            max-width: 760px;
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: clamp(42px, 5vw, 68px);
+
+            font-weight: 500;
+
+            letter-spacing: -.045em;
+
+            line-height: 1.06;
+        }
+
+
+        .references-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 1px;
+
+            margin-top: 75px;
+
+            background: var(--line);
+
+            border: 1px solid var(--line);
+        }
+
+
+        .reference-card {
+
+            min-height: 300px;
+
+            padding: 42px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: space-between;
+
+            background: #ffffff;
+
+            transition:
+                background .25s ease,
+                color .25s ease;
+        }
+
+
+        .reference-card:hover {
+
+            background: var(--dark);
+
+            color: #ffffff;
+        }
+
+
+        .reference-number {
+
+            color: var(--muted);
+
+            font-size: 11px;
+
+            letter-spacing: .15em;
+
+            text-transform: uppercase;
+        }
+
+
+        .reference-card:hover .reference-number,
+        .reference-card:hover p {
+
+            color: #afb5b1;
+        }
+
+
+        .reference-card h2 {
+
+            margin-top: auto;
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: 32px;
+
+            font-weight: 500;
+
+            letter-spacing: -.035em;
+        }
+
+
+        .reference-card p {
+
+            max-width: 470px;
+
+            margin-top: 15px;
+
+            color: var(--muted);
+
+            line-height: 1.7;
+
+            transition: color .25s ease;
+        }
+
+
+        .reference-arrow {
+
+            margin-top: 28px;
+
+            font-size: 25px;
+        }
+
+
+
+        /* =========================
+           PRÓXIMA / ANTERIOR
+        ========================== */
+
+        .navigation-stage {
+
+            padding: 70px 0;
+
+            background: var(--bg);
+
+            border-top: 1px solid var(--line);
+        }
+
+
+        .navigation-row {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 50px;
+        }
+
+
+        .navigation-row a {
+
+            transition: opacity .2s ease;
+        }
+
+
+        .navigation-row a:hover {
+
+            opacity: .55;
+        }
+
+
+        .navigation-row small {
+
+            display: block;
+
+            margin-bottom: 7px;
+
+            color: var(--muted);
+
+            font-size: 10px;
+
+            letter-spacing: .16em;
+
+            text-transform: uppercase;
+        }
+
+
+        .navigation-row strong {
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: 22px;
+
+            font-weight: 500;
+        }
+
+
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+
+            background: #ffffff;
+
+            padding: 60px 0 30px;
+
+            border-top: 1px solid var(--line);
+        }
+
+
+        .footer-bottom {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 40px;
+
+            color: var(--muted);
+
+            font-size: 12px;
+        }
+
+
+
+        /* =========================
+           RESPONSIVO
+        ========================== */
+
+        @media (max-width: 900px) {
+
+            .nav-links {
+
+                display: none;
+            }
+
+
+            .references-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            nav {
+
+                min-height: 105px;
+            }
+
+
+            .logo img {
+
+                width: 165px;
+            }
+
+
+            .references-hero {
+
+                padding-top: 175px;
+            }
+
+
+            .references-content {
+
+                padding: 80px 0;
+            }
+
+
+            .reference-card {
+
+                min-height: 260px;
+
+                padding: 32px;
+            }
+
+
+            .navigation-row {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+
+            .footer-bottom {
+
+                flex-direction: column;
+            }
+
+        }
+
+    </style>
 
 </head>
+
 
 
 <body>
 
 
+<!-- =========================
+     HEADER
+========================== -->
+
+<header>
+
+    <div class="container">
+
+        <nav>
+
+            <a href="./index.html" class="logo">
+
+                <img
+                    src="./assets/images/logo-cumbre.png"
+                    alt="Cumbre — O ponto mais alto da sua ideia"
+                >
+
+            </a>
+
+
+            <div class="nav-links">
+
+                <a href="./index.html#sobre">
+                    Sobre
+                </a>
+
+                <a href="./index.html#expertise">
+                    Expertise
+                </a>
+
+                <a href="./index.html#metodo">
+                    Método
+                </a>
+                <a href="./index.html#equipe">
+                    Equipe
+                </a>
+
+                <div class="nav-dropdown">
+
+                    <a
+                        href="./projeto.html"
+                        class="nav-project"
+                    >
+                        Projeto
+                    </a>
+
+
+                    <div class="dropdown-menu">
+
+                        <a href="./implantacao.html">
+                            Implantação
+                        </a>
+
+                        <a href="./referencias.html">
+                            Referências
+                        </a>
+
+                    </div>
+
+                </div>
+               
+            </div>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+
 <main>
 
 
-<a href="./projeto.html">
+<!-- =========================
+     HERO
+========================== -->
 
-← Projeto
+<section class="references-hero">
 
-</a>
+    <div class="container">
+
+        <div class="breadcrumb">
+
+            <a href="./projeto.html">
+                Projeto
+            </a>
+
+            &nbsp; / &nbsp;
+
+            Referências
+
+        </div>
 
 
-<h1>
+        <h1>
 
-Referências.
+            Referências<br>
 
-</h1>
+            <span>
+                do projeto.
+            </span>
+
+        </h1>
 
 
-<p>
+        <p class="references-intro">
 
-Área destinada à organização das referências
-arquitetônicas, espaciais, materiais e conceituais
-utilizadas no desenvolvimento do projeto.
+            Repertório arquitetônico, espacial, material e conceitual
+            utilizado como apoio ao desenvolvimento da Residência
+            Cumbre 01.
 
-</p>
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     CONTEÚDO
+========================== -->
+
+<section class="references-content">
+
+    <div class="container">
+
+
+        <p class="section-label">
+            Pesquisa e repertório
+        </p>
+
+
+        <h2 class="section-title">
+
+            Referências que orientam
+            nossas decisões.
+
+        </h2>
+
+
+
+        <div class="references-grid">
+
+
+            <article class="reference-card">
+
+                <span class="reference-number">
+                    01 — Arquitetura
+                </span>
+
+
+                <div>
+
+                    <h2>
+                        Referências arquitetônicas
+                    </h2>
+
+
+                    <p>
+
+                        Projetos e obras utilizados como repertório
+                        para linguagem, volumetria, implantação
+                        e relação entre interior e exterior.
+
+                    </p>
+
+
+                    <div class="reference-arrow">
+                        →
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <article class="reference-card">
+
+                <span class="reference-number">
+                    02 — Paisagem
+                </span>
+
+
+                <div>
+
+                    <h2>
+                        Arquitetura & natureza
+                    </h2>
+
+
+                    <p>
+
+                        Referências de integração entre edificação,
+                        topografia, vegetação, vistas e espaços
+                        externos.
+
+                    </p>
+
+
+                    <div class="reference-arrow">
+                        →
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <article class="reference-card">
+
+                <span class="reference-number">
+                    03 — Materiais
+                </span>
+
+
+                <div>
+
+                    <h2>
+                        Materialidade
+                    </h2>
+
+
+                    <p>
+
+                        Repertório de materiais, texturas e soluções
+                        construtivas compatíveis com o conceito
+                        do empreendimento.
+
+                    </p>
+
+
+                    <div class="reference-arrow">
+                        →
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <article class="reference-card">
+
+                <span class="reference-number">
+                    04 — Interiores
+                </span>
+
+
+                <div>
+
+                    <h2>
+                        Atmosfera & espaços
+                    </h2>
+
+
+                    <p>
+
+                        Referências para composição dos ambientes,
+                        iluminação, mobiliário e experiência espacial.
+
+                    </p>
+
+
+                    <div class="reference-arrow">
+                        →
+                    </div>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     NAVEGAÇÃO ENTRE ETAPAS
+========================== -->
+
+<section class="navigation-stage">
+
+    <div class="container">
+
+        <div class="navigation-row">
+
+
+            <a href="./implantacao.html">
+
+                <small>
+                    Etapa anterior
+                </small>
+
+                <strong>
+                    ← Implantação
+                </strong>
+
+            </a>
+
+
+            <a href="./projeto.html">
+
+                <small>
+                    Visão geral
+                </small>
+
+                <strong>
+                    Projeto →
+                </strong>
+
+            </a>
+
+
+        </div>
+
+    </div>
+
+</section>
 
 
 </main>
+
+
+
+<!-- =========================
+     FOOTER
+========================== -->
+
+<footer>
+
+    <div class="container">
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 Cumbre
+            </span>
+
+            <span>
+                O ponto mais alto da sua ideia.
+            </span>
+
+        </div>
+
+    </div>
+
+</footer>
 
 
 </body>
