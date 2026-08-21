@@ -137,7 +137,80 @@
         .nav-links a:hover::after {
             width: 100%;
         }
+/* =========================
+   DROPDOWN PROJETO
+========================== */
 
+.nav-dropdown {
+    position: relative;
+}
+
+.nav-project {
+    display: block;
+}
+
+.dropdown-menu {
+    position: absolute;
+
+    top: calc(100% + 7px);
+    left: 50%;
+
+    transform: translate(-50%, 8px);
+
+    min-width: 190px;
+
+    padding: 10px 0;
+
+    background: #ffffff;
+
+    border: 1px solid rgba(0,0,0,0.08);
+
+    box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease,
+        visibility 0.2s ease;
+
+    z-index: 2000;
+}
+
+.dropdown-menu a {
+    display: block;
+
+    padding: 11px 20px;
+
+    color: var(--dark);
+
+    font-size: 13px;
+
+    white-space: nowrap;
+
+    transition:
+        background 0.2s ease,
+        padding-left 0.2s ease;
+}
+
+.dropdown-menu a::after {
+    display: none;
+}
+
+.dropdown-menu a:hover {
+    background: #f4f3ef;
+
+    padding-left: 24px;
+}
+
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown:focus-within .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+
+    transform: translate(-50%, 0);
+}
 
         /* =========================
            HERO
@@ -635,7 +708,51 @@
 
             text-align: center;
         }
+.project-link {
+    position: relative;
+    overflow: hidden;
 
+    cursor: pointer;
+
+    text-decoration: none;
+}
+
+
+.project-link span {
+    position: relative;
+    z-index: 1;
+}
+
+
+.project-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(15, 18, 16, 0.72);
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    letter-spacing: 0.08em;
+
+    text-transform: uppercase;
+
+    opacity: 0;
+
+    transition: opacity 0.3s ease;
+}
+
+
+.project-link:hover .project-overlay {
+    opacity: 1;
+}
 
         /* =========================
            EQUIPE
@@ -824,8 +941,27 @@ footer {
                 <a href="#sobre">Sobre</a>
                 <a href="#expertise">Expertise</a>
                 <a href="#metodo">Método</a>
-                <a href="#projeto">Projeto</a>
                 <a href="#equipe">Equipe</a>
+            <div class="nav-dropdown">
+                 <a href="./projeto.html" class="nav-project">
+        Projeto
+    </a>
+
+                <div class="dropdown-menu">
+
+        <a href="./implantacao.html">
+            Implantação
+        </a>
+
+        <a href="./referencias.html">
+            Referências
+        </a>
+
+    </div>
+
+</div>
+                
+               
             </div>
 
         </nav>
@@ -1259,11 +1395,17 @@ footer {
             </div>
 
 
-            <div class="project-image">
+           <a href="./projeto.html" class="project-image project-link">
 
-                Futuro render do projeto Cumbre 01
+                <span>
+                    Futuro render do projeto Cumbre 01
+                </span>
 
+            <div class="project-overlay">
+                    Ver projeto →
             </div>
+
+           </a>
 
 
         </div>
