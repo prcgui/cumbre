@@ -440,61 +440,85 @@
             font-weight: 500;
         }
 
+/* =========================
+   MISSÃO / VISÃO
+========================== */
 
-        /* =========================
-           MISSÃO / VISÃO
-        ========================== */
+.direction {
+    background: var(--bg);
+}
 
-     .principle {
-    min-height: 360px;
+
+.principles-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 30px;
+
+    margin-top: 70px;
+}
+
+
+.principle {
+
+    min-height: 410px;
 
     background: var(--surface);
 
-    padding: 44px;
+    padding: 44px 52px;
 
     display: grid;
 
     grid-template-rows: auto 1fr;
+
+    border: 1px solid rgba(0, 0, 0, 0.025);
 }
 
 
-.principle p {
-    align-self: center;
+.principle-label {
+
+    font-size: 12px;
+
+    letter-spacing: 0.17em;
+
+    text-transform: uppercase;
+
+    color: var(--muted);
+}
+
+
+.principle-content {
+
+    display: flex;
+
+    align-items: center;
 
     width: 100%;
+}
+
+
+.principle-content p {
+
+    width: 100%;
+
+    margin: 0;
 
     font-family: "Manrope", sans-serif;
 
     font-size: 25px;
 
-    line-height: 1.4;
+    font-weight: 400;
 
-    letter-spacing: -0.02em;
+    line-height: 1.55;
+
+    letter-spacing: -0.025em;
 
     text-align: justify;
 
     text-justify: inter-word;
 }
-
-        .principle span {
-            font-size: 12px;
-
-            letter-spacing: 0.15em;
-
-            text-transform: uppercase;
-
-            color: var(--muted);
-        }
-
-        .principle p {
-            font-family: "Manrope", sans-serif;
-
-            font-size: 25px;
-
-            line-height: 1.4;
-
-            letter-spacing: -0.02em;
-        }
 
 
         /* =========================
@@ -1063,33 +1087,54 @@
             04 — Direcionamento
         </p>
 
-        <h2 class="section-title">
-            O que nos move:
-        </h2>
+        <section class="direction">
 
+    <div class="container">
+
+        <p class="section-label">
+            04 — Direcionamento
+        </p>
+
+        <h2 class="section-title">
+            O que nos move.
+        </h2>
 
         <div class="principles-grid">
 
             <article class="principle">
 
-                <span>Missão</span>
+                <span class="principle-label">
+                    Missão
+                </span>
 
-                <p>
-                    Desenvolver projetos integrados de arquitetura
-                    e engenharia por meio da metodologia BIM,
-                    conectando pessoas, processos e tecnologia.
-                </p>
+                <div class="principle-content">
+
+                    <p>
+                        Desenvolver projetos integrados de arquitetura e engenharia
+                        por meio da metodologia BIM, conectando pessoas, processos
+                        e tecnologia.
+                    </p>
+
+                </div>
 
             </article>
 
 
             <article class="principle">
 
-                <span>Visão</span>
+                <span class="principle-label">
+                    Visão
+                </span>
 
-                <p>
-                    Ser reconhecida como referência em projetos multidisciplinares integrados, destacando-se pela qualidade, colaboração e gestão da informação.
-                </p>
+                <div class="principle-content">
+
+                    <p>
+                        Ser reconhecida como referência em projetos multidisciplinares
+                        integrados, destacando-se pela qualidade, colaboração e gestão
+                        da informação.
+                    </p>
+
+                </div>
 
             </article>
 
